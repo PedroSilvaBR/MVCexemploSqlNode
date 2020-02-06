@@ -1,0 +1,13 @@
+<div class="container mb-4">
+    <h3>Escolha o curso:</h3>
+    <select id="id_curso" class="form-control">
+        <%
+        for(let id in cursos){
+        %>
+            <option value="<%=cursos[id].id_curso%>"><%=cursos[id].nome_curso%></option>
+        <%
+        }
+        %>
+    </select>
+    <button class="btn btn-primary mt-3" onclick="responderCPA();">Escolher</button>
+</div>

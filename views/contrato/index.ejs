@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<% include ./inc/head.ejs %>
+
+<body>
+    <div id="divContrato" class="container">
+        <div class="text-center m-1" style="font-size: 12pt; font-family: 'Times New Roman', Times, serif;"
+            id="contrato"></div>
+    </div>
+    <div class="container text-center m-5">
+        <button id="btnAssinar" class="btn btn-primary">Concordar e Assinar</button>
+    </div>
+</body>
+<script src="../../../assets/js/jspdf/jspdf.min.js"></script>
+<script>
+    contrato('<%=apiTextoContrato%>');
+
+    var doc = new jsPDF();
+
+    $('#btnAssinar').click(function () {
+
+        let ok = confirm("Concordo com os termos do contrato.");
+        
+        if (ok) {
+
+            doc.fromHTML($('#divContrato').html(), 15, 15,{
+                'width': 170
+            });
+            doc.save('contrato-<%=matricula%>.pdf');
+
+        } else {
+            return;
+        }
+
+    });
+
+</script>
+
+</html>

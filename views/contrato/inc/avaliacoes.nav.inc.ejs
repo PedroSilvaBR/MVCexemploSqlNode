@@ -1,0 +1,59 @@
+<!-- INI TABS --> 
+<div>
+    <div class="bg-light">
+        <p class="text-center h3 pt-4 px-4">
+        CPA <%=cpa%>
+        </p>
+        <p class="text-center pb-2">
+            Legenda:
+        </p>
+        <div class="row container-fluid">
+            <div class="col text-center" style="color: #28a745;"><p><i class="far fa-laugh fa-2x"></i> Muito Bom</p></div>
+            <div class="col text-center" style="color: #007bff;"><p><i class="far fa-smile fa-2x"></i> Bom</p></div>
+            <div class="col text-center" style="color: #6c757d;"><p><i class="far fa-meh fa-2x"></i> Satisfatório</p></div>
+        </div>
+        <div class="row container-fluid">
+            <div class="col text-center" style="color: #ffc107;"><p><i class="far fa-frown fa-2x"></i> Parcialmente Satisfatório</p></div>
+            <div class="col text-center" style="color: #dc3545;"><p><i class="far fa-tired fa-2x"></i> Insatisfatório</p></div>
+            <div class="col text-center" style="color: #17a2b8;"><p><i class="far fa-meh-blank fa-2x"></i> Não se aplica</p></div>
+        </div>
+        <p class="text-center py-2">
+            <b>Clique na(s) aba(s) abaixo para iniciar a(s) avaliação(ões):</b>
+        </p>
+    </div>
+    <ul class="nav nav-tabs justify-content-center mt-2" id="abas">
+        <%
+            let questionario = cpaAgente.questionario;
+
+            for(let avaliacao in questionario){
+                
+                let aspecto = questionario[avaliacao].aspecto;
+                let aria = questionario[avaliacao].aria;
+                let rota = questionario[avaliacao].avaliacao.rota;
+                let avaliacaoIndividual = false;
+                let args;
+
+                if(questionario[avaliacao].avaliacao.individual){ 
+                
+                    avaliacaoIndividual = true; 
+                    %>
+            <li class="nav-item h5">
+                <a class="nav-link" id="<%=aspecto.id%>-tab" data-toggle="tab" href="#<%=aspecto.id%>" role="tab" aria-controls="<%=aspecto.id%>" aria-selected="<%=aria.selected%>">
+                    <%=aspecto.nome%>
+                </a>
+            </li>
+            <%
+                } else {
+
+                    %>
+                <li class="nav-item h5">
+                    <a class="nav-link" id="<%=aspecto.id%>-tab" data-toggle="tab" href="#<%=aspecto.id%>" role="tab" aria-controls="<%=aspecto.id%>" aria-selected="<%=aria.selected%>" onclick=" avaliacao('<%=rota%>',`'<%=aspecto.nome%>'`,'avaliacao_<%=aspecto.id%>','<%=avaliacaoIndividual%>', <%=idRespondente%>);">
+                        <%=aspecto.nome%>
+                    </a>
+                </li>
+                <%
+                }
+            }    
+        %>
+    </ul>
+</div> <!-- FIM TABS??? -->

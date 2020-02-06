@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Página de Erro</title>
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="card main m-5 p-5 rounded">
+    <h1><strong> Nos desculpe, algo deu errado... </strong></h1>
+    <div>
+        <h2 class="m-3"><%= message %></h2>
+        <h3 class="m-3"><%= error.status %></h3>
+        <pre class="m-3 border card p-4 text-success bg-dark" id="stack"><%= error.stack %></pre>
+        <p><a href="/">Voltar para a página inicial</a> </p>
+    </div>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,44 @@
+<%
+let professor = jsonProfessor.professor;
+%>
+    <h5 style="color: #001E3E;">
+        <span class="text-center">Avalie o(a) professor(a): </span>
+        <span><select class="form-control-lg mt-2 ml-2 border-0" id='individuo' onchange=" alternarProfessor(document.getElementById('saveIdRespondente').idRespondente.value, this.options[this.selectedIndex].value);"></span>
+        <%
+for(let index in professor){
+%>
+            <option value="<%=professor[index].id%>">
+                <%=professor[index].nome.split('-')[0].trim()%>
+            </option>
+            <%
+}
+%>
+                </select>
+                </span>
+    </h5>
+    <script>
+        //alternarProfessor(<%=idRespondente%>, document.getElementById("individuo").options[this.selectedIndex].value);
+
+        function alternarProfessor(idRespondente, idProfessor) {
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    if (!this.responseText) {
+
+                        return;
+
+                    } else {
+
+                        _(JSON.parse(this.responseText), idRespondente, idProfessor);
+
+                    }
+                }
+            };
+
+            xhttp.open("GET", "/cpa/api/resposta/read/" + idRespondente, true);
+            xhttp.send();
+        }
+
+        
+    </script>

@@ -1,0 +1,259 @@
+{
+    "contrato": [
+        "CONTRATO DE PRESTAÇÃO DE SERVIÇOS EDUCACIONAIS",
+        "TERMO DE MATRÍCULA",
+        "ANO LETIVO 2018"
+    ],
+    "versao": "1.0.0",
+    "unidade": "FOC",
+    "ano": 2020,
+    "semestre": 1,
+    "introducao": "Têm entre si justo e contratado o seguinte:",
+    "cabecalho": "FOC - Anual - Veteranos",
+    "rodape": "${pagina}",
+    "contratado": {
+        "mantenedora": "INSTITUTO EDUCACIONAL OSWALDO QUIRINO LTDA",
+        "mantida": "FACULDADES OSWALDO CRUZ",
+        "cnpj": "60.704.418-0001-01",
+        "endereco": "Rua Brigadeiro Galvão, 540 – Barra Funda – São Paulo – SP – CEP: 01151-000",
+        "denominacao": {
+            "escola": "doravante denominada <b>ESCOLA</b>, por seu representante legal."
+        }
+    },
+    "contratante": {
+        "denominacao": {
+            "aluno": "E, de outro lado, o aluno abaixo qualificado,doravante denominado <b>CONTRATANTE</b>.",
+            "responsavel": "Ou o responsável legal pelo aluno, doravante denominado também <b>CONTRATANTE</b>."
+        },
+        "aluno": [],
+        "responsavel": []
+    },
+    "clausula": [
+        {
+            "titulo": "Cláusula 1ª",
+            "texto": "O objeto do presente contrato é a Prestação de Serviços Educacionais no ano letivo de 2018, em conformidade com o previsto na Legislação de Ensino e no Regimento Interno do estabelecimento escolar, o qual se obriga a prestá-los ao aluno indicado.",
+            "paragrafo": [
+                {
+                    "style": 0,
+                    "fonte": "normal",
+                    "titulo": "Parágrafo Único",
+                    "texto": "O aluno estará sujeito às normas do Regimento Interno à sua disposição na ESCOLA, cujas determinações integram o presente termo para a aplicação subsidiária em casos omissos, o qual declara, para todos os fins, o seu conhecimento."
+                }
+            ],
+            "style": 0,
+            "fonte": "normal"
+        },
+        {
+            "titulo": "Cláusula 2ª",
+            "texto": "O presente Contrato de Prestação de Serviços Educacionais – Termo de Matrícula - é celebrado sob a égide dos artigos 5º, inciso II, 173 §4º, 206, incisos II e III e 209 da Constituição Federal; Lei nº 9.394/96; Lei nº 9.870/99; Medida Provisória nº 2.173-24/01; Lei 8.078/90 (Código de Proteção e Defesa do Consumidor); e da Lei 10.406/02 (Código Civil).",
+            "style": 0,
+            "fonte": "normal"
+        },
+        {
+            "titulo": "Cláusula 3ª",
+            "texto": "As informações consignadas no preâmbulo deste instrumento são de inteira e exclusiva responsabilidade do CONTRATANTE, bem como a atualização de documentos e do endereço para correspondência.",
+            "paragrafo": [
+                {
+                    "titulo": "§ Único",
+                    "texto": "O CONTRATANTE deverá comunicar à ESCOLA sua mudança de endereço e telefone no prazo máximo de 05 (cinco) dias, sob pena de infração contratual.",
+                    "style": 0,
+                    "fonte": "normal"
+                }
+            ],
+            "style": 0,
+            "fonte": "normal"
+        },
+        {
+            "titulo": "Cláusula 4ª",
+            "texto": "Como contrapartida pelos serviços prestados pela ESCOLA, o CONTRATANTE pagará uma anuidade no valor de R$ ${anuidade} (${anuidadeextenso}), que será dividida em ${parcelas} (${parcelasextenso}) parcelas, sendo a matrícula no valor de R$ ${valormatricula} (${valormatriculaextenso}) e as demais iguais e consecutivas no valor de R$ ${valormensalidade} (${valormensalidadeeextenso}).",
+            "variaveis": ["${anuidade}","${anuidadeextenso}","${parcelas}","${parcelasextenso}","${valormatricula}","${valormatriculaextenso}","${valormensalidade}","${valormensalidadeeextenso}"],
+            "paragrafo": [
+                {
+                    "titulo": "§ 1º",
+                    "texto": "A matrícula (primeira parcela) só terá eficácia após o efetivo recebimento deste valor pela ESCOLA e desde que o CONTRATANTE esteja em dia com o pagamento das mensalidades de anos anteriores ou que tenha negociado seu débito junto à ESCOLA ou terceiro.",
+                    "style": 0,
+                    "fonte": "normal"
+                },
+                {
+                    "titulo": "§ 2º",
+                    "texto": "O vencimento normal das demais parcelas será sempre no dia ${diavencimento} (${diavencimentoextenso})  de cada mês. Na eventualidade desta data não ser dia útil, o pagamento poderá ser realizado no dia útil subsequente.",
+                    "variaveis": ["${diavencimento}","${diavencimentoextenso}"],
+                    "style": 0,
+                    "fonte": "normal"
+                },
+                {
+                    "titulo": "§ 3º",
+                    "texto": "Eventuais bolsas de estudos ou descontos permanentes concedidos pela entidade mantenedora incidirão sempre, exclusivamente, sobre os valores referentes às matrículas em séries ou módulos fechados. Os valores referentes às matrículas em dependências não estão sujeitos a qualquer desconto permanente ou bolsa de estudos.",
+                    "style": 0,
+                    "fonte": "normal"
+                },
+                {
+                    "titulo": "§ 4º",
+                    "texto": "A cobrança da mensalidade poderá ser feita por qualquer uma das empresas do grupo econômico Oswaldo Cruz, a saber: Instituto Educacional Oswaldo Quirino Ltda., Paulista de Pedagogia Ltda., Pro Técnica Paulista Ltda., Instituto Paulista de Difusão Cultural Ltda. ou qualquer empresa que venha a ser indicada para tal fim.",
+                    "style": 0,
+                    "fonte": "normal"
+                },
+                {
+                    "titulo": "§ 5º",
+                    "texto": "O não recebimento do boleto de mensalidade não exime o CONTRATANTE do pagamento, devendo este entrar em contato com a Receita Escolar da ESCOLA, a fim de que seja conferida eventual divergência de dados. A segunda via do boleto pode ser obtida no Portal, através do endereço eletrônico www.oswaldocruz.br. ",
+                    "style": 0,
+                    "fonte": "normal"
+                },
+                {
+                    "titulo": "§ 6º",
+                    "texto": "Constatada a qualquer tempo pela ESCOLA a inidoneidade e/ou ausência de documentos exigidos referente à conclusão do Ensino Médio, o CONTRATANTE terá um prazo de até 30 (trinta) dias corridos para a regularização, contados a partir da comunicação feita pela ESCOLA, caso contrário, este contrato estará automaticamente rescindido.",
+                    "style": 0,
+                    "fonte": "normal"
+                },
+                {
+                    "titulo": "§ 7º",
+                    "texto": "Na ocorrência de alterações legislativas e normativas, emanadas dos Poderes Públicos, ou outra norma advinda de Convenção Coletiva ou Dissídio Coletivo, concedido na data-base dos professores e pessoal administrativo, que impliquem comprovado aumento de custos ou redução de receitas da ESCOLA, os valores das parcelas em aberto da anuidade serão revistos, e a diferença imediatamente repassada, de modo a manter o equilíbrio da equação econômico-financeira do presente contrato.",
+                    "style": 0,
+                    "fonte": "normal"
+                }
+            ],
+            "style": 0,
+            "fonte": "normal"
+        },
+        {
+            "titulo": "Cláusula 5ª",
+            "texto": "São de inteira responsabilidade da ESCOLA o planejamento de Prestação dos Serviços Educacionais, no que se refere à marcação de datas para as provas de aproveitamento, fixação de carga horária, designação de professores, orientação didático-pedagógica, disponibilidade de turmas e horários de seus funcionamentos, além de outras providências que as atividades docentes exigirem.",
+            "paragrafo": [
+                {
+                    "titulo": "§ 1º",
+                    "texto": "Para os Cursos oferecidos no período matutino, a ESCOLA reserva-se ao direito de, a partir da 3ª série, inclusive, oferecer turmas apenas no período noturno, principalmente quando o número de alunos interessados no período matutino for igual ou inferior a 20 (vinte).",
+                    "style": 0,
+                    "fonte": "normal"
+                },
+                {
+                    "titulo": "§ 2º",
+                    "texto": "O mesmo direito da Escola, previsto no § 1º supra, poderá incidir para os Cursos que preveem, a partir da 3ª série, o cumprimento obrigatório de Estágios Supervisionados e/ou o desenvolvimento de Projetos, haja vista o fluxo natural dos alunos desse período solicitarem transferência para o noturno, a fim de ingressarem no mercado de trabalho.",
+                    "style": 0,
+                    "fonte": "normal"
+                },
+                {
+                    "titulo": "§ 3º",
+                    "texto": "Para os cursos que possuem Ciclo Básico, a partir da 3ª série os alunos devem confirmar a opção realizada na ocasião do Processo Seletivo ou escolher qualquer um dos cursos que compõem o mesmo. ",
+                    "style": 0,
+                    "fonte": "normal"
+                }
+            ],
+            "style": 0,
+            "fonte": "normal"
+        },
+        {
+            "titulo": "Cláusula 6ª",
+            "texto": "Em caso de atraso do pagamento na data indicada no carnê, de qualquer uma das parcelas, o valor devido será acrescido de multa de 2% (dois por cento), mais juros de mora de 1% (um por cento) ao mês, equivalente a uma taxa de permanência diária de 0,033%.",
+            "paragrafo": [
+                {
+                    "titulo": "§ 1º",
+                    "texto": "Quando o período de atraso for superior a 30 dias do vencimento, o valor devido será acrescido também da variação do IPC publicado pela FIPE – Fundação Instituto de Pesquisas Econômicas da Universidade de São Paulo.",
+                    "style": 0,
+                    "fonte": "bold"
+                },
+                {
+                    "titulo": "§ 2º",
+                    "texto": "No caso de inadimplência, a ESCOLA poderá optar, cumulativamente ou não, por: cobrar diretamente ou através de escritório especializado, emitir título de crédito, acrescido dos encargos, juros, juros de mora mais multa de 2% (dois por cento), protestar título de crédito, executar título de crédito, executar o Contrato de prestação de Serviços Educacionais - assinado pelas partes -, ajuizar ação de rito ordinário de cobrança, e não aceitar a matrícula, podendo ainda utilizar outros meios de proteção a seu crédito, tais como inscrição no Serviço Central de Proteção ao Crédito e/ou Serasa, desde que cumpridos os preceitos estabelecidos pelo Código de Defesa do Consumidor ou orientação legal específica. Havendo atuação de terceiros e/ou advogados para a cobrança amigável e/ou judicial, estes farão jus a receber honorários advocatícios e encargos pelos serviços.",
+                    "style": 0,
+                    "fonte": "bold"
+                }
+            ],
+            "style": "border: 2px solid #000000; padding-left: 18px; padding-right: 18px; font-weight: bold;",
+            "fonte": "bold"
+        },
+        {
+            "titulo": "Cláusula 7ª",
+            "texto": "A ESCOLA fica autorizada a cancelar todo e qualquer benefício que o CONTRATANTE possua (Bolsa de estudos, descontos, ajuda de custo para estagiário etc.), caso o CONTRATANTE atrase o pagamento de qualquer das parcelas da anuidade por prazo superior a 30 (trinta) dias de seu vencimento.",
+            "paragrafo": [
+                {
+                    "titulo": "§ único",
+                    "texto": "A perda do benefício se dará em caráter irreversível e permanente até o final do curso.",
+                    "style": 0,
+                    "fonte": "normal"
+                }
+            ],
+            "style": 0,
+            "fonte": "normal"
+        },
+        {
+            "titulo": "Cláusula 8ª",
+            "texto": "NÃO ESTÃO INCLUSOS NESTE CONTRATO os serviços especiais de recuperação, reforço, dependência, adaptação, os opcionais de uso facultativo para o aluno: as segundas chamadas de prova, provas substitutivas, exames especiais, bem como a segunda via de documentos, o material didático de uso individual do aluno, a confecção de diplomas, certificados e atestados em papel especial, currículos, programas, históricos, boletim de notas e declarações.",
+            "style": 0,
+            "fonte": "normal"
+        },
+        {
+            "titulo": "Cláusula 9ª",
+            "texto": "Em caso de pedido de Aproveitamento de Estudos - sendo o aluno egresso desta mesma Instituição - deve estar o mesmo com sua situação financeira anterior regularizada, a fim de que a matrícula seja convalidada; caso contrário, essa será nula.",
+            "style": 0,
+            "fonte": "normal"
+        },
+        {
+            "titulo": "Cláusula 10",
+            "texto": "Em caso de desistência do aluno, a ESCOLA se obriga a devolver 80% dos valores pagos, desde que formalmente solicitada até o dia útil anterior ao início das aulas do presente ano letivo, momento em que não serão mais aceitos quaisquer pedidos de devolução.",
+            "paragrafo": [
+                {
+                    "titulo": "§ único",
+                    "texto": "Quando a matrícula for aceita pela ESCOLA, excepcionalmente, após o início das aulas, no caso do estudante requerer o cancelamento da matrícula o mesmo fará jus à devolução do valor da mensalidade do mês do cancelamento.",
+                    "style": 0,
+                    "fonte": "normal"
+                }
+            ],
+            "style": 0,
+            "fonte": "normal"
+        },
+        {
+            "titulo": "Cláusula 11",
+            "texto": "Em caso de cancelamento ou trancamento de matrícula, este último com a manutenção de vínculo, o aluno se obriga a manifestar-se por escrito, momento em que o contrato cessará de produzir seus efeitos de parte a parte. A parcela do mês no qual ocorrer o cancelamento ou trancamento é devida, independente da data do vencimento.",
+            "style": 0,
+            "fonte": "normal"
+        },
+        {
+            "titulo": "Cláusula 12",
+            "texto": "A obrigatoriedade do pagamento da mensalidade independe da freqüência do aluno nas aulas, desde que observada a Cláusula 11 do presente Instrumento.",
+            "style": 0,
+            "fonte": "normal"
+        },
+        {
+            "titulo": "Cláusula 13",
+            "texto": "É facultada à ESCOLA a rescisão do presente Instrumento por insuficiência de alunos matriculados, exclusivamente em turmas iniciantes (calouros), até a data do início do curso, hipótese em que será restituída ao CONTRATANTE a íntegra dos valores pagos.",
+            "style": 0,
+            "fonte": "normal"
+        },
+        {
+            "titulo": "Cláusula 14",
+            "texto": "Caso o aluno conclua o período regular do curso, sem a entrega do devido Estágio/Monografia, necessário à conclusão do processo pedagógico, fica obrigado ao pagamento de nova matrícula até que o entregue.",
+            "style": 0,
+            "fonte": "normal"
+        },
+        {
+            "titulo": "Cláusula 15",
+            "texto": "O descumprimento das obrigações previstas neste Contrato, por qualquer das partes, desobriga a outra de sua observância.",
+            "style": 0,
+            "fonte": "normal"
+        },
+        {
+            "titulo": "Cláusula 16",
+            "texto": "O presente Contrato – Termo de Matrícula –, que é assinado neste ato, entrará em vigor com o simples deferimento da matrícula pela direção da ESCOLA. Caso ocorra o indeferimento, os valores já pagos pelo CONTRATANTE serão devolvidos com correção monetária calculada pela variação do IPC publicado pela FIPE.",
+            "style": 0,
+            "fonte": "normal"
+        },
+        {
+            "titulo": "Cláusula 17",
+            "texto": "A ESCOLA, livre de quaisquer ônus para com o CONTRATANTE/ALUNO, poderá utilizar-se de imagens deste, gravadas durante o processo pedagógico, para fins exclusivos de divulgação da ESCOLA e de suas atividades, podendo, para tanto, reproduzi-la ou divulgá-la junto à Internet, jornais e todos os demais meios de comunicação, público ou privado.",
+            "style": 0,
+            "fonte": "normal"
+        },
+        {
+            "titulo": "Cláusula 18",
+            "texto": "O CONTRATANTE declara que teve prévio conhecimento das cláusulas deste contrato e dos encargos educacionais fixados, conforme determina a legislação, e os aceita livremente, constituindo-se a celebração deste instrumento na manifestação expressa de acordo e homologação das normas e dos valores fixados",
+            "style": 0,
+            "fonte": "normal"
+        },
+        {
+            "titulo": "Cláusula 19",
+            "texto": "Fica eleito o Foro da Comarca de São Paulo para dirimir questões oriundas do presente Contrato.",
+            "style": 0,
+            "fonte": "normal"
+        }
+    ]
+}

@@ -1,0 +1,94 @@
+<div class="modal fade" id="modalProfessores" tabindex="-1" role="dialog" aria-labelledby="modalProfessoresLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="h3 text-primary text-center" id="modalProfessoresLabel"><strong>Professores</strong></h5>
+            </div>
+            <div class="modal-body form-group" id="divFormCadastroChamada">
+                <p>Você precisa avaliar todos os seus professores. Se, por acaso, algum dos listados abaixo não estiver
+                    na
+                    sua grade, simplesmente não o avalie.</p>
+                <p>
+                    <%
+                  let professor = jsonProfessor.professor;
+                  for(let index in professor){
+                    %>
+                    <p class="cpa-link-professor mb-3 pb-2"
+                        onclick=" avaliaProfessor(<%=idRespondente%>,<%=professor[index].id%>,'<%=professor[index].nome.split('-')[0].trim()%>');">
+                        <%=professor[index].nome.split('-')[0].trim()%><span id="checkAvaliaProfessor"></span>
+                    </p>
+                    <%
+                    }
+                  %>
+                </p>
+            </div>
+            <div class="modal-body" id="divMsgFormCadastroChamada" style=" display: none;"></div>
+            <div class="modal-footer">
+                <div class="left-side">
+                    <button type="button" class="btn btn-default btn-link" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .cpa-link-professor {
+        color: #0080dd;
+        border-bottom: 1px solid #dcdcdc;
+    }
+
+    .cpa-link-professor:hover {
+        color: #1188ee;
+        cursor: pointer;
+        font-weight: bold;
+    }
+</style>
+<script>
+
+    $("#modalProfessores").on('shown.bs.modal', function(){
+        
+    });
+
+    function avaliaProfessor(idRespondente, idProfessor, nomeProfessor) {
+
+        setTimeout(function () { $('#modalProfessores').modal('hide') }, 100);
+        $('#linkListaProfesores').hide();
+        $('#nomeProfessor').show();
+        $('#nomeProfessor').html('<span style=" font-weight: bold;">' + nomeProfessor + '</span>' + '<a href="#" rule="button" data-toggle="modal" data-target="#modalProfessores"><i class="fas fa-sync-alt lead ml-3"></i></a>');
+        let vDivProf = document.getElementsByClassName("individual"),i = 0, divToHide;
+
+        for(i=0; i<vDivProf.length; i++)
+        { 
+            divToHide = vDivProf[i]; 
+            $(divToHide).hide(); 
+            
+        } 
+
+        $('#avaliacao_docente' + idProfessor).show();
+        avaliacao('/cpa/foc/2019/2/discente/docente/', `'Docente'`, 'avaliacao_docente' + idProfessor, true, <%=idRespondente %>);
+
+    }
+
+    function checkAvaliaProfessor(idRespondente, idProfessor) {
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                if (!this.responseText) {
+
+                    return;
+
+                } else {
+
+                    return(JSON.parse(this.responseText));
+
+                }
+            }
+        };
+
+        xhttp.open("GET", "/cpa/api/resposta/read/" + idRespondente, true);
+        xhttp.send();
+
+    }
+</script>

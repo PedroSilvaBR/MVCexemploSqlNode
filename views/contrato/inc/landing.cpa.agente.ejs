@@ -1,0 +1,281 @@
+<!--
+
+    Nessa view nós vamos:
+
+    1) Validar o parâmetro de agrupamento com o perfil do agente
+    2) Se ok, verificar se já existe um idRespondente para esse agrupamento
+    3) Se não existir, criar o idRespondente
+    4) Se já existir, recuperar a CPA respondida por ele
+    5) Criar o ambiente CPA
+
+-->
+<div class="container p-2">
+    <div class="row container text-primary p-2 h5">
+        <span class="col-1 align-right align-middle" id="spanCheckAgrupamento"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="spinner" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-spinner fa-w-16 fa-spin fa-lg"><path fill="currentColor" d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z" class=""></path></svg></span>
+        <span class="col-11">Verificando agrupamento</span>
+    </div>
+    <div class="row container text-secondary p-2 h5">
+        <span class="col-1 align-right align-middle" id="spanCheckIdRespondente"><i class="far fa-clock"></i></span>
+        <span class="col-11">Verificando respondente</span>
+    </div>
+    <div class="row container text-secondary p-2 h5">
+        <span class="col-1 align-right align-middle" id="spanGeraIdRespondente"><i class="far fa-clock"></i></span>
+        <span class="col-11">Gerando respondente</span>
+    </div>
+    <div class="row container text-secondary p-2 h5">
+        <span class="col-1 align-right align-middle" id="spanCriaAmbiente"><i class="far fa-clock"></i></span>
+        <span class="col-11">Criando ambiente</span>
+    </div>
+    <div class="row p-2 mb-4"></div>
+</div>
+<form>
+    <input type="hidden" id="idRespondente" value="">
+    <input type="hidden" id="agente" value="<%=agente%>">
+    <input type="hidden" id="agrupamento" value="<%=agrupamento%>">
+    <input type="hidden" id="cpaAgente" value="<%=JSON.stringify(cpaAgente)%>">
+</form>
+<script>
+    var agente = document.getElementById("agente").value;
+    var agrupamento = document.getElementById("agrupamento").value;
+    var cpaAgente = document.getElementById("agente").cpaAgente;
+    var spinnerLoad = '<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="spinner" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-spinner fa-w-16 fa-spin fa-lg"><path fill="currentColor" d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z" class=""></path></svg>';
+    var checked = '<i class="fas fa-check-circle"></i>';
+
+    $(document).ready(function() {
+
+        console.log('Página pronta');
+        validaAgrupamento(agrupamento);
+
+    });
+
+    function validaAgrupamento(agrupamento) {
+        console.log('valida agrupamento');
+
+        var cpa = '<%=cpa%>',
+            ano = <%=ano%>,
+            semestre = <%=semestre%>,
+            matricula,
+            turma,
+            curso,
+            idProfessor,
+            idMantenedora,
+            erro = false,
+            checkIdRespondente = false,
+            spanCheckAgrupamento = document.getElementById("spanCheckAgrupamento"),
+            spanCheckIdRespondente = document.getElementById("spanCheckIdRespondente"),
+            spanGeraIdRespondente = document.getElementById("spanGeraIdRespondente"),
+            spanCriaAmbiente = document.getElementById("spanCriaAmbiente"),
+            idRespondente = document.getElementById('idRespondente');
+
+        matricula = agrupamento.split(',')[0];
+        turma = agrupamento.split(',')[1];
+        curso = agrupamento.split(',')[2];
+        idProfessor = agrupamento.split(',')[3];
+        idMantenedora = agrupamento.split(',')[4];
+
+        //console.log(agente);
+        console.log('matricula ' + matricula);
+        console.log('turma ' + turma);
+        console.log('curso ' + curso);
+        console.log('idPro ' + idProfessor);
+        console.log('idMant ' + idMantenedora);
+
+        switch (agente) {
+
+            case 'Corpo Docente':
+
+                console.log('case ' + agente);
+
+                matricula = null;
+                turma = null;
+                idMantenedora = null;
+
+                if (!curso) {
+                    erro = true;
+                }
+                if (!idProfessor) {
+                    erro = true;
+                }
+                checkIdRespondente = true;
+                break;
+
+            case 'Corpo Discente':
+
+                console.log('case ' + agente);
+
+                idProfessor = null;
+                idMantenedora = null;
+
+                if (!matricula) {
+                    erro = true;
+                }
+                if (!turma) {
+                    erro = true;
+                }
+                if (!curso) {
+                    erro = true;
+                }
+                checkIdRespondente = true;
+                break;
+
+            case 'Corpo Técnico Administrativo':
+
+                matricula = null;
+                turma = null;
+                curso = null;
+                idProfessor = null;
+
+                console.log('case ' + agente);
+
+                if (!idMantenedora) {
+                    erro = true;
+                }
+                break;
+
+            case 'Egresso':
+
+                console.log('case ' + agente);
+
+                matricula = null;
+                turma = null;
+                idProfessor = null;
+                idMantenedora = null;
+
+                if (!curso) {
+
+                    erro = true;
+                }
+                break;
+
+            case 'Comunidade Externa':
+
+                console.log('case ' + agente);
+
+                matricula = null;
+                turma = null;
+                curso = null;
+                idProfessor = null;
+                idMantenedora = null;
+
+                break;
+        }
+
+        console.log('erro: ' + erro);
+
+        if (erro) {
+
+            alert("Parâmetros incorretos para agente: " + agente);
+
+        } else {
+
+            spanCheckAgrupamento.parentElement.className = "row container text-success p-2 h5";
+            spanCheckAgrupamento.innerHTML = checked;
+
+            if (checkIdRespondente) {
+
+                validaIdRespondente(cpa, ano, semestre, matricula, turma, curso, idProfessor, idMantenedora);
+
+            } else {
+
+                spanCheckIdRespondente.parentElement.className = "row container text-success p-2 h5";
+                spanCheckIdRespondente.innerHTML = checked;
+
+                geraIdRespondente(cpa, ano, semestre, matricula, turma, curso, idProfessor, idMantenedora);
+
+            }
+
+        }
+
+    }
+
+    function validaIdRespondente(cpa, ano, semestre, matricula, turma, curso, idProfessor, idMantenedora) {
+
+        //console.log("/cpa/api/respondente/read/?cpa=" + cpa + "&ano=" + ano + "&semestre=" + semestre + "&agente=" + agente + "&matricula=" + matricula + "&turma=" + turma + "&curso=" + curso + "&idProfessor=" + idProfessor + "&idMantenedora=" + idMantenedora);
+
+        spanCheckIdRespondente.innerHTML = spinnerLoad;
+        console.log('valida idRespondente');
+
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+
+            if (this.readyState == 4 && this.status == 200) {
+
+                spanCheckIdRespondente.parentElement.className = "row container text-success p-2 h5";
+                spanCheckIdRespondente.innerHTML = checked;
+
+                idRespondente = JSON.parse(this.responseText)[0].idRespondente;
+                console.dir(idRespondente);
+                if (!idRespondente) {
+
+                    geraIdRespondente(cpa, ano, semestre, matricula, turma, curso, idProfessor, idMantenedora);
+
+                } else {
+
+                    criaAmbiente(idRespondente, turma);
+
+                }
+
+            }
+        };
+
+        xhttp.open("GET", "/cpa/api/respondente/read/?cpa=" + cpa + "&ano=" + ano + "&semestre=" + semestre + "&agente=" + agente + "&matricula=" + matricula + "&turma=" + turma + "&curso=" + curso + "&idProfessor=" + idProfessor + "&idMantenedora=" + idMantenedora, true);
+        xhttp.send();
+
+    }
+
+    function geraIdRespondente(cpa, ano, semestre, matricula, turma, curso, idProfessor, idMantenedora) {
+
+        spanGeraIdRespondente.innerHTML = spinnerLoad;
+        console.log('gera idRespondente');
+
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+
+            if (this.readyState == 4 && this.status == 200) {
+
+                idRespondente = JSON.parse(this.responseText)[0].idRespondente;
+                console.dir(idRespondente);
+                if (!idRespondente) {
+
+                    alert("Ocorreu um erro, tente novamente.");
+                    return;
+
+                } else {
+
+                    criaAmbiente(idRespondente, turma);
+
+                }
+
+            }
+        };
+
+        xhttp.open("GET", "/cpa/api/respondente/create/?cpa=" + cpa + "&ano=" + ano + "&semestre=" + semestre + "&agente=" + agente + "&matricula=" + matricula + "&turma=" + turma + "&curso=" + curso + "&idProfessor=" + idProfessor + "&idMantenedora=" + idMantenedora, true);
+        xhttp.send();
+
+    }
+
+    function criaAmbiente(idRespondente, turma) {
+
+        spanCriaAmbiente.innerHTML = spinnerLoad;
+        spanGeraIdRespondente.parentElement.className = "row container text-success p-2 h5";
+        spanGeraIdRespondente.innerHTML = checked;
+        console.log('Criando ambiente para idRespondente: ' + idRespondente);
+
+        setTimeout(function() {
+
+            spanCriaAmbiente.innerHTML = checked;
+            spanCriaAmbiente.parentElement.className = "row container text-success p-2 h5";
+
+            let ano = <%=ano%>;
+            let semestre = <%=semestre%>;
+            let key = (parseInt(ano) + parseInt(semestre)) + parseInt(idRespondente);
+            key += '.' + idRespondente + '.' + turma;
+
+            document.location.assign('<%=rotaQuestionario%>' + '/questionario/' + key);
+
+        }, 2000);
+
+    }
+</script>

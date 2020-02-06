@@ -1,0 +1,195 @@
+<!-- INI CONTAINER TABS -->
+<div class="container my-4 tab-content" id="myTabContent">
+    <%
+    let questionario = cpaAgente.questionario;
+    let agente = cpaAgente.nome;
+   
+    for(let avaliacao in questionario){
+
+        let aspecto = questionario[avaliacao].aspecto;
+        let aria = questionario[avaliacao].aria;
+        let rota = questionario[avaliacao].avaliacao.rota;
+        var avaliacaoIndividual = questionario[avaliacao].avaliacao.individual;
+        var tituloAvaliacao = questionario[avaliacao].avaliacao.titulo;
+
+        %>
+    <div class="tab-pane fade <%=aria.link%>" id="<%=aspecto.id%>" role="tabpanel"
+        aria-labelledby="<%=aspecto.id%>-tab">
+        <%
+        if(avaliacaoIndividual){
+            %>
+        <div class="sticky text-center" id="linkListaProfesores"><a href="#" rule="button" data-toggle="modal"
+                data-target="#modalProfessores">
+                <button class="btn btn-outline-primary btn-lg">Avalie seus PROFESSORES</button>
+            </a></div>
+        <div id="nomeProfessor" class="h4" style=" display: none; color: #001E3E; text-align: center;"></div>
+        <form><input type="hidden" id="idProfessor" value=""></form>
+        <%
+        let professor = jsonProfessor.professor;
+        for(let index in professor){
+        %>
+        <div class="individual" id="avaliacao_<%=aspecto.id + professor[index].id%>"></div>
+        <%
+        }
+        } else {
+        %>
+        <div class="sticky">
+            <h4 style="color: #001E3E; text-align: center;"><%=tituloAvaliacao%></h4>
+        </div>
+        <div id="avaliacao_<%=aspecto.id%>"></div>
+        <%
+        }
+        if(questionario.length-1 == 0 || parseInt(avaliacao) == questionario.length-1){
+        %>
+        <div class="text-center mt-5"><button class="btn btn-success btn-lg"
+                onclick=" proximo(false, null, null, null, '<%=agente%>', '<%=idRespondente%>');">
+                Finalizar <span class="fas fa-check-circle" aria-hidden="true"></span></button></div>
+        <%
+        } else {
+        %>
+        <div class="text-center"><button class="btn btn-primary btn-lg"
+                onclick=" proximo(true, '<%=aspecto.id%>', '<%=rota%>', '<%=avaliacaoIndividual%>', '<%=agente%>', '<%=idRespondente%>');">
+                Voltar ao Topo  <span class="fas fa-arrow-circle-up" aria-hidden="true"></span></button></div>
+        <%
+        }
+        %>
+    </div>
+    <%
+    }
+    %>
+</div>
+
+<script>
+
+    $('#modalProfessores').on('shown.bs.modal', function () {
+
+        // Carregar lista de professores no modal...
+        /* Os toggles abaixo serão uteis
+
+        $('#linkListaProfesores').toggle();
+        $('#nomeProfessor').toggle();
+        
+        */
+
+
+
+    });
+
+    function proximo(temProximo, aspecto, rota, avaliacaoIndividual, agente, idRespondente) {
+
+        if (temProximo) {
+
+            //Verifica em qual agente e qual aspecto está para ir para o próximo aspecto
+            if (agente == 'Corpo Docente') {
+                if (aspecto == 'instituicao') {
+                    proxAba('curso', '/cpa/foc/2019/2/docente/curso', avaliacaoIndividual, 'Curso', idRespondente);
+                } else if (aspecto == 'curso') {
+                    proxAba('coordenacao', '/cpa/foc/2019/2/docente/coordenacao', avaliacaoIndividual, 'Coordenação', idRespondente);
+                }
+            } else if (agente == 'Corpo Discente') {
+                if (aspecto == 'instituicao') {
+                    proxAba('coordenacao', '/cpa/foc/2019/2/discente/coordenacao', avaliacaoIndividual, 'Coordenação', idRespondente);
+                } else if (aspecto == 'coordenacao') {
+                    proxAba('docente', '/cpa/foc/2019/2/discente/docente', avaliacaoIndividual, 'Docente', idRespondente);
+                }
+            } else if (agente == 'Comunidade Externa') {
+                if (aspecto == 'instituicao') {
+                    proxAba('discente', '/cpa/foc/2019/2/comunidade/discente', avaliacaoIndividual, 'Discente', idRespondente);
+                } else if (aspecto == 'discente') {
+                    proxAba('contato', '/cpa/foc/2019/2/comunidade/contato', avaliacaoIndividual, 'Contato', idRespondente);
+                }
+            }
+
+        } else {
+
+            // Aqui vai o código que verifica se todas as perguntas foram respondidas
+            var xhttp = new XMLHttpRequest();
+
+            xhttp.onreadystatechange = function () {
+
+                if (this.readyState == 4 && this.status == 200) {
+
+                    var respostas = JSON.parse(this.responseText);
+
+                    var ok = false;
+
+                    if (agente == 'Corpo Docente') {
+                        if (respostas.length > 33) {
+                            ok = confirm('Certeza que quer finalizar?');
+                        } else {
+                            ok = false;
+                        }
+                    } else if (agente == 'Corpo Discente') {
+                        if('<%=numProfessores%>' != undefined){
+                            var numProfessores = parseInt('<%=numProfessores%>');
+                            var minimoDiscente = 14 + (numProfessores * 10);
+                            if (respostas.length > minimoDiscente) {
+                                ok = confirm('Certeza que quer finalizar?');
+                            } else {
+                                ok = false;
+                            }
+                        }
+                    } else if (agente == 'Comunidade Externa') {
+                        if (respostas.length > 18) {
+                            ok = confirm('Certeza que quer finalizar?');
+                        } else {
+                            ok = false;
+                        }
+                    } else if (agente == 'Egresso') {
+                        if (respostas.length > 8) {
+                            ok = confirm('Certeza que quer finalizar?');
+                        } else {
+                            ok = false;
+                        }
+                    } else if (agente == 'Corpo Técnico Administrativo') {
+                        if (respostas.length > 17) {
+                            ok = confirm('Certeza que quer finalizar?');
+                        } else {
+                            ok = false;
+                        }
+                    }
+
+
+                    if (ok) {
+                        if (agente == 'Corpo Técnico Administrativo') {
+                            window.location.href = "https://escola.pro.br/cpa/sucessoAdm";
+                        } else {
+                            window.location.href = "https://escola.pro.br/cpa/sucesso";
+                        }
+
+                    } else {
+
+                        if(agente == 'Corpo Discente'){
+                            alert('Responda todas as perguntas antes de finalizar. (Não esqueça de responder todos os professores.)');
+                        } else {
+                            alert('Responda todas as perguntas antes de finalizar.')
+                        }
+
+                    }
+
+                }
+            };
+
+            xhttp.open("GET", "/cpa/api/resposta/read/" + idRespondente, true);
+            xhttp.send();
+
+        }
+
+    }
+
+    var proxAba = function (idAspecto, rotaProx, proxAvaliacaoIndividual, nomeProx, idRespondente) {
+        backToTop();
+        /*var existeQuestionario = document.getElementById('#avaliacao_' + idAspecto);
+        if (idAspecto != 'docente') {
+            avaliacao(rotaProx, nomeProx, 'avaliacao_' + idAspecto, proxAvaliacaoIndividual, idRespondente);
+            $('#abas a[href="#' + idAspecto + '"]').tab('show');
+        } else {
+            //avaliacao(rotaProx, nomeProx, 'avaliacao_' + idAspecto, proxAvaliacaoIndividual, idRespondente);
+            $('#abas a[href="#' + idAspecto + '"]').tab('show');
+        }*/
+    }
+
+    var backToTop = function () {
+        document.documentElement.scrollTop = 0;
+    }
+</script>
