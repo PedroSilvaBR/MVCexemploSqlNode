@@ -22,7 +22,7 @@
     "html-pdf": "^2.2.0",
     "http-errors": "~1.6.3",
     "ip": "^1.1.5",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "morgan": "~1.9.1",
     "mssql": "^5.1.0",
     "node-pre-gyp": "^0.14.0",
