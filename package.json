@@ -19,7 +19,7 @@
     "express": "~4.16.1",
     "fs": "0.0.1-security",
     "got": "^10.0.4",
-    "html-pdf": "^2.2.0",
+    "html-pdf": "^3.0.1",
     "http-errors": "~1.6.3",
     "ip": "^1.1.5",
     "jquery": "^3.4.1",
